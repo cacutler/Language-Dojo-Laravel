@@ -14,10 +14,31 @@ This is a full-stack web-application to help people learn different languages li
 
 **Users**
 
+- ID
 - Name
 - Username
 - Email
 - Phone Number
 - Password
+- Primary Language
+- Courses (Many to Many where a user can have many courses and a course can have many users)
 
-**Courses**
+**Language Courses**
+
+- ID
+- Title
+- Grammar Rules (One to Many where a language has many grammar rules but a grammar rule only belongs to one language)
+- Language Examples (One to Many where a language can have many examples but an example is primarily for one language course)
+
+**Course Progress**
+
+- ID
+- User ID
+- Course ID
+- Progress
+
+**User Examples**
+
+- ID
+- User ID
+- Example
