@@ -20,25 +20,68 @@ This is a full-stack web-application to help people learn different languages li
 - Email
 - Phone Number
 - Password
-- Primary Language
-- Courses (Many to Many where a user can have many courses and a course can have many users)
+- Native Language
+- Is Admin
+- Created At
+- Updated At
 
-**Language Courses**
+**Languages**
 
 - ID
-- Title
-- Grammar Rules (One to Many where a language has many grammar rules but a grammar rule only belongs to one language)
-- Language Examples (One to Many where a language can have many examples but an example is primarily for one language course)
+- Name
+- Code
 
-**Course Progress**
+**Courses**
+
+- ID
+- Language ID
+- Title
+- Description
+- Created At
+- Updated At
+
+**Grammar Rules**
+
+- ID
+- Course ID
+- Title
+- Explanation
+- Difficulty Level
+- Created At
+- Updated At
+
+**System Examples**
+
+- ID
+- Grammar Rule ID
+- Phrase
+- Translation
+- Romanization
+
+**Course User (Pivot/Progress Table)**
 
 - ID
 - User ID
 - Course ID
-- Progress
+- Current Status
+- Created At
+- Updated At
+
+**Progress Tracking**
+
+- ID
+- User ID
+- Grammar Rule ID
+- Is Completed
+- Completed At
 
 **User Examples**
 
 - ID
 - User ID
-- Example
+- Grammar Rule ID
+- Custom Phrase
+- Translation
+- Notes
+- Created At
+- Updated At
