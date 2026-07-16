@@ -9,6 +9,7 @@ This is a full-stack web-application to help people learn different languages li
 - Allow users to track progress
 - Allow users to add their own examples
 - Allow admin users to add new language courses as well as see and edit existing courses
+- Allow admin users to elevate users to admin users
 
 ## Database Design
 
