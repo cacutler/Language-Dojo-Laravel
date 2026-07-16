@@ -1,6 +1,6 @@
 # Lanaguage Dojo
 
-This is a full-stack web-application to help people learn different languages like Korean, Japanese, Chinese, Spanish, and English through the use of different methods and strategies, such as vocabulary, grammar rules, alphabets, and examples using quotes from various sources of entertainment.
+This is a full-stack web-application written with the Laravel framework to help people learn different languages like Korean, Japanese, Chinese, Spanish, and English through the use of different methods and strategies, such as vocabulary, grammar rules, alphabets, and examples using quotes from various sources of entertainment.
 
 ## Features
 
