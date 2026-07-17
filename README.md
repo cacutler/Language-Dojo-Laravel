@@ -15,74 +15,76 @@ This is a full-stack web-application written with the Laravel framework to help 
 
 **Users**
 
-- ID
-- Name
-- Username
-- Email
-- Phone Number
-- Password
-- Native Language
-- Is Admin
-- Created At
-- Updated At
+- ID (UUID; primary key) - required
+- First Name (string) - nullable
+- Last Name (string) - nullable
+- Username (string) - required; unique
+- Email (string) - required; unique
+- Phone Number (string) - nullable
+- Password (string) - required
+- Native Language (string) - required
+- Is Admin (boolean) - default to false
+- Created At (timestamp)
+- Updated At (timestamp)
 
 **Languages**
 
-- ID
-- Name
-- Code
+- ID (UUID; primary key) - required
+- Name (string) - required
+- Code (string) - required
 
 **Courses**
 
-- ID
-- Language ID
-- Title
-- Description
-- Created At
-- Updated At
+- ID (UUID; primary key) - required
+- Language ID (int; foreign key) - required
+- Title (string) - required
+- Description (text) - nullable
+- Created At (timestamp)
+- Updated At (timestamp)
 
 **Grammar Rules**
 
-- ID
-- Course ID
-- Title
-- Explanation
-- Difficulty Level
-- Created At
-- Updated At
+- ID (UUID; primary key) - required
+- Course ID (UUID; foreign key) - required
+- Title (string) - required
+- Explanation (text) - nullable
+- Difficulty Level (enum) - required
+- Created At (timestamp)
+- Updated At (timestamp)
 
 **System Examples**
 
-- ID
-- Grammar Rule ID
-- Phrase
-- Translation
-- Romanization
+- ID (UUID; primary key) - required
+- Grammar Rule ID (UUID; foreign key) - required
+- Phrase (string) - required
+- Translation (string) - required
+- Romanization (string) - nullable
 
 **Course User (Pivot/Progress Table)**
 
-- ID
-- User ID
-- Course ID
-- Current Status
-- Created At
-- Updated At
+- ID (UUID; primary key) - required
+- User ID (UUID; foreign key) - required
+- Course ID (UUID; foreign key) - required
+- Current Status (enum) - default to not enrolled
+- Created At (timestamp)
+- Updated At (timestamp)
 
 **Progress Tracking**
 
-- ID
-- User ID
-- Grammar Rule ID
-- Is Completed
-- Completed At
+- ID (UUID) - required
+- User ID (UUID) - required
+- Grammar Rule ID (UUID) - required
+- Is Completed (boolean) - default to false
+- Completed At (timestamps)
 
 **User Examples**
 
-- ID
-- User ID
-- Grammar Rule ID
-- Custom Phrase
-- Translation
-- Notes
-- Created At
-- Updated At
+- ID (UUID; primary key) - required
+- User ID (UUID; foreign key) - required
+- Grammar Rule ID (UUID; foreign key) - required
+- Custom Phrase (string) - required
+- Translation (string) - required
+- Romanization (string) - nullable
+- Notes (text) - nullable
+- Created At (timestamp)
+- Updated At (timestamp)
