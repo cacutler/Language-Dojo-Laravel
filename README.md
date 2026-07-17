@@ -24,8 +24,6 @@ This is a full-stack web-application written with the Laravel framework to help 
 - Password (string) - required
 - Native Language (string) - required
 - Is Admin (boolean) - default to false
-- Created At (timestamp)
-- Updated At (timestamp)
 
 **Languages**
 
