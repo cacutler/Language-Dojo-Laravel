@@ -34,7 +34,7 @@ This is a full-stack web-application written with the Laravel framework to help 
 **Courses**
 
 - ID (UUID; primary key) - required
-- Language ID (int; foreign key) - required
+- Language ID (UUID; foreign key) - required
 - Title (string) - required
 - Description (text) - nullable
 - Created At (timestamp)
