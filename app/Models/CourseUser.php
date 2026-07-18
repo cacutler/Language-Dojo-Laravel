@@ -1,10 +1,19 @@
 <?php
-
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-
-class CourseUser extends Model
-{
-    //
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+#[Fillable('user_id', 'course_id', 'current_status')]
+class CourseUser extends Pivot {
+    use HasUuids;
+    protected $table = 'course_user';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
+    }
+    public function course(): BelongsTo {
+        return $this->belongsTo(Course::class);
+    }
 }
