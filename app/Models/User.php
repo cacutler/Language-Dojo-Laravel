@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 #[Fillable(['first_name', 'last_name', 'username', 'email', 'phone_number', 'password', 'native_language', 'is_admin'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable {
-    use HasFactory, Notifiable, HasUuids;
+    use HasFactory, Notifiable, HasUuids, HasApiTokens;
     /**
      * Get the attributes that should be cast.
      * @return array<string, string>
