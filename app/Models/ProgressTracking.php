@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class ProgressTracking extends Model {
     use HasFactory, HasUuids;
     protected function casts(): array {
-        return ['is_completed' => 'boolean', 'completed_at' => 'datetime'];
+        return ['is_completed' => 'boolean'];
     }
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);

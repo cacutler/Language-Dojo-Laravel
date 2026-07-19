@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->foreignUuid('course_id')->constrained('courses')->cascadeOnDelete();
             $table->string('title');
             $table->text('explanation')->nullable();
-            $table->enum('difficulty_level', ['beinner', 'intermediate', 'advanced']);
+            $table->enum('difficulty_level', ['beginner', 'intermediate', 'advanced']);
             $table->timestamps();
         });
     }
