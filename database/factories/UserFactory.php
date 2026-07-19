@@ -14,15 +14,19 @@ class UserFactory extends Factory {
     protected static ?string $password;
     /**
      * Define the model's default state.
-     *
      * @return array<string, mixed>
      */
     public function definition(): array {
         return [
-            'name' => fake()->name(),
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'username' => fake()->username(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'phone_name' => fake()->phoneNumber(),
             'password' => static::$password ??= Hash::make('password'),
+            'native_language' => fake()->randElement(['English', 'Spanish', 'French', 'Japanese']),
+            'is_admin' => false,
             'remember_token' => Str::random(10)
         ];
     }
@@ -32,6 +36,11 @@ class UserFactory extends Factory {
     public function unverified(): static {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null
+        ]);
+    }
+    public function admin(): static {
+        return $this->state(fn (array $attributes) => [
+            'is_admin' => true
         ]);
     }
 }
