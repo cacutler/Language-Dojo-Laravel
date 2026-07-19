@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 #[Fillable('user_id', 'course_id', 'current_status')]
 class CourseUser extends Pivot {
     use HasUuids, HasFactory;
-    protected $table = 'course_user';
+    protected $table = 'course_users';
     public $incrementing = false;
     protected $keyType = 'string';
     public function user(): BelongsTo {
