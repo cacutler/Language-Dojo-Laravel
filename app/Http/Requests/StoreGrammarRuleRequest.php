@@ -20,7 +20,7 @@ class StoreGrammarRuleRequest extends FormRequest {
             'course_id' => ['required', 'uuid', 'exists:courses,id'],
             'title' => ['required', 'string', 'max:255'],
             'explanation' => ['nullable', 'string'],
-            'difficulty_level' => ['required', Rule::in(['beinner', 'intermediate', 'advanced'])]
+            'difficulty_level' => ['required', Rule::in(['beignner', 'intermediate', 'advanced'])]
         ];
     }
 }
