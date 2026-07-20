@@ -20,13 +20,19 @@ class CourseController extends Controller {
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {}
+    public function create(Language $language) {
+        $this->authorize('create', Course::class);
+        return view('courses.create', Course::class);
+    }
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreCourseRequest $request) {
         $course = Course::create($request->validated());
-        return CourseResource::make($course)->response()->setStatusCode(Response::HTTP_CREATED);
+        if ($request->expectsJson()) {
+            return CourseResource::make($course)->response()->setStatusCode(Response::HTTP_CREATED);
+        }
+        return redirect()->route('web.courses.edit', $course)->with('status', 'Course created.');
     }
     /**
      * Display the specified resource.
@@ -37,13 +43,19 @@ class CourseController extends Controller {
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) {}
+    public function edit(Course $course) {
+        $this->authorize('update', $course);
+        return view('courses.edit', ['course' => $course->load('language')]);
+    }
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateCourseRequest $request, Course $course) {
         $course->update($request->validated());
-        return CourseResource::make($course);
+        if ($request->expectsJson()) {
+            return CourseResource::make($course);
+        }
+        return redirect()->route('web.courses.edit', $course)->with('status', 'Course updated.');
     }
     /**
      * Remove the specified resource from storage.

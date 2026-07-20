@@ -10,7 +10,7 @@ use App\Http\Controllers\UserExampleController;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-Route::prefix('v1')->group(function () {
+Route::prefix('v1')->name('api.')->group(function () {
     Route::apiResource('languages', LanguageController::class);
     Route::apiResource('languages.courses', CourseController::class)->only(['index', 'store']);
     Route::apiResource('courses', CourseController::class)->except(['index', 'store']);
