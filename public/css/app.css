@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    background-color: #ee5253;
+    padding: 1rem;
+}
+header ul li {
+    list-style: none;
+    padding: 1rem;
+}
+header ul li a {
+    text-decoration: none;
+    color: black;
+}
+h1 {
+    text-align: center;
+}
+footer {
+    background-color: #54a0ff;
+    text-align: center;
+    padding: 1rem;
+}

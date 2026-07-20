@@ -10,6 +10,7 @@ This is a full-stack web-application written with the Laravel framework to help 
 - Allow users to add their own examples
 - Allow admin users to add new language courses as well as see and edit existing courses
 - Allow admin users to elevate users to admin users
+- Uses the following color palette: #ee5253 (used in the header and footer), #54a0ff (used in the header and footer), #0abde3 (used in the main section), #5f27cd (used in the main section)
 
 ## Database Design
 
