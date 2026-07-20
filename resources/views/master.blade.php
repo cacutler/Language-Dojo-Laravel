@@ -12,7 +12,7 @@
         <header>
             <nav id="navbar">
                 <ul>
-                    <li><a href="{{route('index')}}"></a></li>
+                    <li><a href="{{route('index')}}">Home</a></li>
                 </ul>
             </nav>
         </header>
