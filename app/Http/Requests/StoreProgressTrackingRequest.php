@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-
+use App\Models\ProgressTracking;
 class StoreProgressTrackingRequest extends FormRequest
 {
     /**
@@ -12,7 +12,7 @@ class StoreProgressTrackingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', ProgressTracking::class);
     }
 
     /**
@@ -23,7 +23,8 @@ class StoreProgressTrackingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'grammar_rule_id' => ['required', 'uuid', 'exists:grammar_rules,id'],
+            'is_completed' => ['sometimes', 'boolean']
         ];
     }
 }

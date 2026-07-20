@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateGrammarRuleRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class UpdateGrammarRuleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('grammarRule'));
     }
 
     /**
@@ -23,7 +24,10 @@ class UpdateGrammarRuleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'course_id' => ['sometimes', 'uuid', 'exists:courses,id'],
+            'title' => ['sometimes', 'string', 'max:255'],
+            'explanation' => ['nullable', 'string'],
+            'difficulty_level' => ['sometimes', Rule::in(['beinner', 'intermediate', 'advanced'])]
         ];
     }
 }

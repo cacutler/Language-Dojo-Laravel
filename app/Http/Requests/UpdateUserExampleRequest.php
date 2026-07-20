@@ -12,7 +12,7 @@ class UpdateUserExampleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('userExample'));
     }
 
     /**
@@ -23,7 +23,10 @@ class UpdateUserExampleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'custom_phrase' => ['sometimes', 'string', 'max:255'],
+            'translation' => ['sometimes', 'string', 'max:255'],
+            'romanization' => ['nullable', 'string', 'max:255'],
+            'notes' => ['nullable', 'string']
         ];
     }
 }

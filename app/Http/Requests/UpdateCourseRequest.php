@@ -12,7 +12,7 @@ class UpdateCourseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('course'));
     }
 
     /**
@@ -23,7 +23,9 @@ class UpdateCourseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'language_id' => ['sometimes', 'uuid', 'exists:languages,id'],
+            'title' => ['sometimes', 'string', 'max:255'],
+            'description' => ['nullable', 'string']
         ];
     }
 }

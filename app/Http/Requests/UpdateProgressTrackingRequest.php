@@ -12,7 +12,7 @@ class UpdateProgressTrackingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('update', $this->route('progressTracking'));
     }
 
     /**
@@ -23,7 +23,7 @@ class UpdateProgressTrackingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'is_completed' => ['required', 'boolean']
         ];
     }
 }

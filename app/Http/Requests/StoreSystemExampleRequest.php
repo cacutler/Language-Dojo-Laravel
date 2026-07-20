@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-
+use App\Models\SystemExample;
 class StoreSystemExampleRequest extends FormRequest
 {
     /**
@@ -12,7 +12,7 @@ class StoreSystemExampleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->can('create', SystemExample::class);
     }
 
     /**
@@ -23,7 +23,10 @@ class StoreSystemExampleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'grammar_rule_id' => ['required', 'uuid', 'exists:grammar_rules,id'],
+            'phrase' => ['required', 'string', 'max:255'],
+            'translation' => ['required', 'string', 'max:255'],
+            'romanization' => ['required', 'string', 'max:255']
         ];
     }
 }

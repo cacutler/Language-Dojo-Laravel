@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Requests;
-
+use App\Models\Language;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class UpdateLanguageRequest extends FormRequest
 {
     /**
@@ -22,8 +22,11 @@ class UpdateLanguageRequest extends FormRequest
      */
     public function rules(): array
     {
+        /** @var Language $language */
+        $language = $this->route('language');
         return [
-            //
+            'name' => ['sometimes', 'string', 'max:255'],
+            'code' => ['sometimes', 'string', 'max:10', Rule::unique('languages', 'code')->ignore($language->id)]
         ];
     }
 }
