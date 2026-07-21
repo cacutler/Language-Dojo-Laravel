@@ -20,13 +20,19 @@ class SystemExampleController extends Controller {
     /**
      * Show the form for creating a new resource.
      */
-    public function create(){}
+    public function create(GrammarRule $grammarRule) {
+        $this->authorize('create', SystemExample::class);
+        return view('system-examples.create', ['grammarRule' => $grammarRule]);
+    }
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreSystemExampleRequest $request) {
         $systemExample = SystemExample::create($request->validated());
-        return SystemExampleResource::make($systemExample)->response()->setStatusCode(Response::HTTP_CREATED);
+        if ($request->expectsJson()) {
+            return SystemExampleResource::make($systemExample)->response()->setStatusCode(Response::HTTP_CREATED);
+        }
+        return redirect()->route('web.system-examples.edit', $systemExample)->with('status', 'Example created.');
     }
     /**
      * Display the specified resource.
@@ -37,13 +43,19 @@ class SystemExampleController extends Controller {
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id) {}
+    public function edit(SystemExample $systemExample) {
+        $this->authorize('update', $systemExample);
+        return view('system-examples.edit', ['systemExample' => $systemExample->load('grammarRule')]);
+    }
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateSystemExampleRequest $request, SystemExample $systemExample) {
         $systemExample->update($request->validated());
-        return SystemExampleResource::make($systemExample);
+        if ($request->expectsJson()) {
+            return SystemExampleResource::make($systemExample);
+        }
+        return redirect()->route('web.system-examples.edit', $systemExample)->with('status', 'Example updated.');
     }
     /**
      * Remove the specified resource from storage.
