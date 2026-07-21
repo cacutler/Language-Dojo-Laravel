@@ -13,6 +13,7 @@
             <nav id="navbar">
                 <ul>
                     <li><a href="{{route('index')}}">Home</a></li>
+                    <li><a href="{{ route('web.languages.create') }}">Create Language</a></li>
                 </ul>
             </nav>
         </header>
