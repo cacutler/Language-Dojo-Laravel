@@ -13,9 +13,19 @@
             <nav id="navbar">
                 <ul>
                     <li><a href="{{route('index')}}">Home</a></li>
-                    <li><a href="{{ route('register') }}">Sign Up</a></li>
+                    @auth
+                        <li></li>
+                    @endauth
+                    @guest
+                        <li><a href="{{route('login')}}">Sign In</a></li>
+                        <li><a href="{{route('register')}}">Sign Up</a></li>
+                    @endguest
                 </ul>
             </nav>
+            @auth
+                <p>Welcome, {{$user->first_name}}</p>
+                <button>Log Out</button>
+            @endauth
         </header>
         <main>
             @yield('content')

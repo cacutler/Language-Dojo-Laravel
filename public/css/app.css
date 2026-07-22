@@ -16,7 +16,28 @@ header ul li a {
     color: black;
 }
 h1 {
+    margin-top: 0.5rem;
     text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 1rem auto;
+    border: solid black 1px;
+    border-radius: 5px;
+    padding: 1rem;
+}
+label {
+    margin-bottom: 0.1rem;
+}
+input {
+    margin-bottom: 0.25rem;
+    padding: 0.25rem;
+}
+.submit {
+    width: 5rem !important;
+    margin: 0.5rem auto 0.75rem;
 }
 footer {
     background-color: #54a0ff;

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Contracts\Validation\ValidationRule;
 class LoginRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,7 +20,7 @@ class LoginRequest extends FormRequest {
      */
     public function rules(): array {
         return [
-            'login' => ['required', 'string'],
+            'username' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }

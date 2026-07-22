@@ -21,8 +21,8 @@ class RegisterRequest extends FormRequest {
             'username' => ['required', 'string', 'max:255', 'unique:users,username'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'phone_number' => ['nullable', 'string', 'max:255'],
-            'password' => ['required', 'confirmed', Password::defaults()],
-            'native_language' => ['required', 'string', 'max:255']
+            'native_language' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'confirmed', Password::defaults()]
         ];
     }
 }
