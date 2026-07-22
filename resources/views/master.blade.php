@@ -12,19 +12,24 @@
         <header>
             <nav id="navbar">
                 <ul>
-                    <li><a href="{{route('index')}}">Home</a></li>
+                    <li><a href="{{route('index')}}" class="{{request()->routeIs('index') ? 'active' : ''}}">Home</a></li>
                     @auth
                         <li></li>
                     @endauth
                     @guest
-                        <li><a href="{{route('login')}}">Sign In</a></li>
-                        <li><a href="{{route('register')}}">Sign Up</a></li>
+                        <li><a href="{{route('login')}}" class="{{request()->routeIs('login') ? 'active' : ''}}">Sign In</a></li>
+                        <li><a href="{{route('register')}}" class="{{request()->routeIs('register') ? 'active' : ''}}">Sign Up</a></li>
                     @endguest
                 </ul>
             </nav>
             @auth
-                <p>Welcome, {{$user->first_name}}</p>
-                <button>Log Out</button>
+                <div id="auth_area">
+                    <p>Welcome, {{auth()->user()->first_name}}</p>
+                    <form method="POST" action="{{ route('logout') }}" id="logout_form">
+                        @csrf
+                        <button type="submit" class="submit" id="logout">Log Out</button>
+                    </form>
+                </div>
             @endauth
         </header>
         <main>

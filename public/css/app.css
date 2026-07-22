@@ -28,6 +28,13 @@ header ul li a {
 }
 header ul li a:hover {
     background-color: #54a0ff;
+    transition: background-color 0.5s ease;
+}
+#auth_area {
+    float: right;
+}
+.active {
+    background-color: #54a0ff;
 }
 main {
     flex: 1;
@@ -58,11 +65,25 @@ input {
 .submit {
     width: 5rem !important;
     margin: 0.5rem auto 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-radius: 5px;
     background-color: #5f27cd;
     color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #34156f;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s ease;
 }
 .submit:hover {
-    cursor: pointer;
+    background-color: #7d43e8;
+}
+.submit:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #34156f;
+}
+.submit:focus-visible {
+    outline: 3px solid #222;
+    outline-offset: 3px;
 }
 footer {
     background-color: #54a0ff;
