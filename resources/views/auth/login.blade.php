@@ -10,8 +10,8 @@
     </ul>
 @endif
 <form method="POST" action="{{route('login.store')}}" id="login_form">
-    <label for="username">Username</label>
-    <input type="text" name="username" class="username" id="username" placeholder="Username">
+    <label for="login">Email</label>
+    <input type="email" name="login" class="login" id="login" placeholder="Email">
     <label for="password">Password</label>
     <input type="password" name="password" class="password" id="password" placeholder="Password">
     <input type="submit" name="submit" class="submit" id="submit">
