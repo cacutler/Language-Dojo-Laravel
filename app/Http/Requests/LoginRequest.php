@@ -21,7 +21,7 @@ class LoginRequest extends FormRequest {
     public function rules(): array {
         return [
             'login' => ['required', 'string'],
-            'password' => ['required', 'string'],
+            'password' => ['required', 'string']
         ];
     }
     /**
@@ -30,7 +30,7 @@ class LoginRequest extends FormRequest {
     public function authenticate(): void {
         $this->ensureIsNotRateLimited();
         $field = filter_var($this->input('login'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        if (! Auth::attempt([$field => $this->input('login'), 'password' => $this->input('password')], $this->boolean('remember'))) {
+        if (!Auth::attempt([$field => $this->input('login'), 'password' => $this->input('password')], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
             throw ValidationException::withMessages(['login' => trans('auth.failed')]);
         }
@@ -40,7 +40,7 @@ class LoginRequest extends FormRequest {
      * Ensure the login request is not rate limited.
      */
     public function ensureIsNotRateLimited(): void {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
         event(new Lockout($this));
