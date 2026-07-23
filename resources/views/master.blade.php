@@ -11,7 +11,8 @@
     <body>
         <header>
             <nav id="navbar">
-                <ul>
+                <div class="left-spacer"></div>
+                <ul class="center">
                     <li><a href="{{route('index')}}" class="{{request()->routeIs('index') ? 'active' : ''}}">Home</a></li>
                     @auth
                         <li></li>
@@ -21,16 +22,16 @@
                         <li><a href="{{route('register')}}" class="{{request()->routeIs('register') ? 'active' : ''}}">Sign Up</a></li>
                     @endguest
                 </ul>
+                @auth
+                    <div id="auth_area" class="right-space">
+                        <p>Welcome, {{auth()->user()->first_name}}</p>
+                        <form method="POST" action="{{ route('logout') }}" id="logout_form">
+                            @csrf
+                            <button type="submit" class="submit" id="logout">Log Out</button>
+                        </form>
+                    </div>
+                @endauth
             </nav>
-            @auth
-                <div id="auth_area">
-                    <p>Welcome, {{auth()->user()->first_name}}</p>
-                    <form method="POST" action="{{ route('logout') }}" id="logout_form">
-                        @csrf
-                        <button type="submit" class="submit" id="logout">Log Out</button>
-                    </form>
-                </div>
-            @endauth
         </header>
         <main>
             @yield('content')

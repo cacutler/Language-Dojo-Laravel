@@ -12,10 +12,18 @@ header {
     background-color: #ee5253;
     padding: 2rem;
 }
-header ul {
+header nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+}
+header nav ul {
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 header ul li {
     list-style: none;
@@ -31,7 +39,13 @@ header ul li a:hover {
     transition: background-color 0.5s ease;
 }
 #auth_area {
-    float: right;
+    justify-self: end;
+}
+#logout_form {
+    padding: 0;
+    margin: 0.5rem;
+    border: none;
+    background-color: #ee5253;
 }
 .active {
     background-color: #54a0ff;
