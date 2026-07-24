@@ -8,6 +8,18 @@
 @if ($language)
     <p>For language: {{ $language->name }}</p>
 @endif
+@can('create', App\Models\Course::class)
+    @if ($language)
+        <a href="{{ route('web.languages.courses.create', $language) }}">Add Course</a>
+    @else
+        <div>
+            <p>Create a course for a language:</p>
+            @foreach (App\Models\Language::query()->orderBy('name')->get() as $languageOption)
+                <a href="{{ route('web.languages.courses.create', $languageOption) }}">Add Course to {{ $languageOption->name }}</a>
+            @endforeach
+        </div>
+    @endif
+@endcan
 <ul>
     @foreach ($courses as $course)
         <li>
