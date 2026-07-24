@@ -52,7 +52,12 @@ class CourseController extends Controller {
      */
     public function edit(Course $course) {
         $this->authorize('update', $course);
-        return view('courses.edit', ['course' => $course->load('language')]);
+        $course->load('language');
+
+        return view('courses.edit', [
+            'course' => $course,
+            'language' => $course->language,
+        ]);
     }
     /**
      * Update the specified resource in storage.

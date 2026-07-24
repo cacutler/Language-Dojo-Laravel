@@ -8,6 +8,18 @@
 @if ($course)
     <p>For course: {{ $course->title }}</p>
 @endif
+@can('create', App\Models\GrammarRule::class)
+    @if ($course)
+        <a href="{{ route('web.courses.grammar-rules.create', $course) }}">Add Grammar Rule</a>
+    @else
+        <div>
+            <p>Create a grammar rule for a course:</p>
+            @foreach (App\Models\Course::query()->orderBy('title')->get() as $courseOption)
+                <a href="{{ route('web.courses.grammar-rules.create', $courseOption) }}">Add Grammar Rule to {{ $courseOption->title }}</a>
+            @endforeach
+        </div>
+    @endif
+@endcan
 <ul>
     @foreach ($grammarRules as $grammarRule)
         <li>

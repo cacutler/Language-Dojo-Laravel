@@ -8,6 +8,18 @@
 @if ($grammarRule)
     <p>For grammar rule: {{ $grammarRule->title }}</p>
 @endif
+@can('create', App\Models\SystemExample::class)
+    @if ($grammarRule)
+        <a href="{{ route('web.grammar-rules.system-examples.create', $grammarRule) }}">Add System Example</a>
+    @else
+        <div>
+            <p>Create a grammar rule for a course:</p>
+            @foreach (App\Models\GrammarRule::query()->orderBy('title')->get() as $grammarRule)
+                <a href="{{ route('web.grammar-rules.system-examples.create', $grammarRule) }}">Add System Example to {{ $grammarRule->title }}</a>
+            @endforeach
+        </div>
+    @endif
+@endcan
 <ul>
     @foreach ($systemExamples as $systemExample)
         <li>

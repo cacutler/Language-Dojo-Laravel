@@ -27,7 +27,7 @@ class UpdateGrammarRuleRequest extends FormRequest
             'course_id' => ['sometimes', 'uuid', 'exists:courses,id'],
             'title' => ['sometimes', 'string', 'max:255'],
             'explanation' => ['nullable', 'string'],
-            'difficulty_level' => ['sometimes', Rule::in(['beignner', 'intermediate', 'advanced'])]
+            'difficulty_level' => ['sometimes', Rule::in(['beginner', 'intermediate', 'advanced'])]
         ];
     }
 }

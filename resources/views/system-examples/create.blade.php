@@ -9,7 +9,7 @@
         @endforeach
     </ul>
 @endif
-<form method="POST" action="{{ oute('web.grammar-rules.system-examples.store', $grammarRule)}}">
+<form method="POST" action="{{ route('web.grammar-rules.system-examples.store', $grammarRule)}}">
     @csrf
     <input type="hidden" name="grammar_rule_id" value="{{$grammarRule->id}}">
     <label for="phrase">Phrase</label>
