@@ -39,7 +39,7 @@ class CourseController extends Controller {
         if ($request->expectsJson()) {
             return CourseResource::make($course)->response()->setStatusCode(Response::HTTP_CREATED);
         }
-        return redirect()->route('web.courses.edit', $course)->with('status', 'Course created.');
+        return redirect()->route('web.courses.index', $course)->with('status', 'Course created.');
     }
     /**
      * Display the specified resource.
@@ -62,7 +62,7 @@ class CourseController extends Controller {
         if ($request->expectsJson()) {
             return CourseResource::make($course);
         }
-        return redirect()->route('web.courses.edit', $course)->with('status', 'Course updated.');
+        return redirect()->route('web.courses.index', $course)->with('status', 'Course updated.');
     }
     /**
      * Remove the specified resource from storage.

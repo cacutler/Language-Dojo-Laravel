@@ -38,7 +38,7 @@ class ProgressTrackingController extends Controller {
         if ($request->expectsJson()) {
             return ProgressTrackingResource::make($progressTracking)->response()->setStatusCode(Response::HTTP_CREATED);
         }
-        return redirect()->route('web.progress-tracking.edit', $progressTracking)->with('status', 'Progress saved.');
+        return redirect()->route('web.progress-tracking.index', $progressTracking)->with('status', 'Progress saved.');
     }
     /**
      * Display the specified resource.
@@ -62,7 +62,7 @@ class ProgressTrackingController extends Controller {
         if ($request->expectsJson()) {
             return ProgressTrackingResource::make($progressTracking);
         }
-        return redirect()->route('web.progress-tracking.edit', $progressTracking)->with('status', 'Progress updated.');
+        return redirect()->route('web.progress-tracking.index', $progressTracking)->with('status', 'Progress updated.');
     }
     /**
      * Remove the specified resource from storage.

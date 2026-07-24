@@ -38,7 +38,7 @@ class UserExampleController extends Controller {
         if ($request->expectsJson()) {
             return UserExampleResource::make($userExample)->response()->setStatusCode(Response::HTTP_CREATED);
         }
-        return redirect()->route('web.user-examples.edit', $userExample)->with('status', 'Example created.');
+        return redirect()->route('web.user-examples.index', $userExample)->with('status', 'Example created.');
     }
     /**
      * Display the specified resource.
@@ -62,7 +62,7 @@ class UserExampleController extends Controller {
         if ($request->expectsJson()) {
             return UserExampleResource::make($userExample);
         }
-        return redirect()->route('web.user-examples.edit', $userExample)->with('status', 'Example updated.');
+        return redirect()->route('web.user-examples.index', $userExample)->with('status', 'Example updated.');
     }
     /**
      * Remove the specified resource from storage.

@@ -34,7 +34,7 @@ class LanguageController extends Controller {
         if ($request->expectsJson()) {
             return LanguageResource::make($language)->response()->setStatusCode(Response::HTTP_CREATED);
         }
-        return redirect()->route('web.languages.edit', $language)->with('status', 'Language created.');
+        return redirect()->route('web.languages.index', $language)->with('status', 'Language created.');
     }
     /**
      * Display the specified resource.
@@ -57,7 +57,7 @@ class LanguageController extends Controller {
         if ($request->expectsJson()) {
             return LanguageResource::make($language);
         }
-        return redirect()->route('web.languages.edit', $language)->with('status', 'Language updated.');
+        return redirect()->route('web.languages.index', $language)->with('status', 'Language updated.');
     }
     /**
      * Remove the specified resource from storage.

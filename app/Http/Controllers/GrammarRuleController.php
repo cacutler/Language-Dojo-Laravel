@@ -39,7 +39,7 @@ class GrammarRuleController extends Controller {
         if ($request->expectsJson()) {
             return GrammarRuleResource::make($grammarRule)->response()->setStatusCode(Response::HTTP_CREATED);
         }
-        return redirect()->route('web.grammar-rules.edit', $grammarRule)->with('status', 'Grammar rule created.');
+        return redirect()->route('web.grammar-rules.index', $grammarRule)->with('status', 'Grammar rule created.');
     }
     /**
      * Display the specified resource.
@@ -62,7 +62,7 @@ class GrammarRuleController extends Controller {
         if ($request->expectsJson()) {
             return GrammarRuleResource::make($grammarRule);
         }
-        return redirect()->route('web.grammar-rules.edit', $grammarRule)->with('status', 'Grammar rule updated.');
+        return redirect()->route('web.grammar-rules.index', $grammarRule)->with('status', 'Grammar rule updated.');
     }
     /**
      * Remove the specified resource from storage.

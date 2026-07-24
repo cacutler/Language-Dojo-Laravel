@@ -39,7 +39,7 @@ class SystemExampleController extends Controller {
         if ($request->expectsJson()) {
             return SystemExampleResource::make($systemExample)->response()->setStatusCode(Response::HTTP_CREATED);
         }
-        return redirect()->route('web.system-examples.edit', $systemExample)->with('status', 'Example created.');
+        return redirect()->route('web.system-examples.index', $systemExample)->with('status', 'Example created.');
     }
     /**
      * Display the specified resource.
@@ -62,7 +62,7 @@ class SystemExampleController extends Controller {
         if ($request->expectsJson()) {
             return SystemExampleResource::make($systemExample);
         }
-        return redirect()->route('web.system-examples.edit', $systemExample)->with('status', 'Example updated.');
+        return redirect()->route('web.system-examples.index', $systemExample)->with('status', 'Example updated.');
     }
     /**
      * Remove the specified resource from storage.
