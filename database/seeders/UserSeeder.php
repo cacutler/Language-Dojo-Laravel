@@ -7,7 +7,6 @@ class UserSeeder extends Seeder {
      * Run the database seeds.
      */
     public function run(): void {
-        User::factory()->admin()->create(['username' => 'admin', 'email' => 'admin@example.com']);
-        User::factory()->count(20)->create();
+        User::factory()->admin()->create(['username' => 'admin', 'email' => 'admin@example.com', 'password' => 'testing1']);
     }
 }
