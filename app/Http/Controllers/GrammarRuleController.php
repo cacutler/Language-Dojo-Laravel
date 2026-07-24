@@ -6,16 +6,23 @@ use App\Http\Requests\UpdateGrammarRuleRequest;
 use App\Http\Resources\GrammarRuleResource;
 use App\Models\Course;
 use App\Models\GrammarRule;
-use Illuminate\Http\Response;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 class GrammarRuleController extends Controller {
     use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
-    public function index(?Course $course = null) {
+    public function index(Request $request, ?Course $course = null) {
         $grammarRules = $course ? $course->grammarRules() : GrammarRule::query();
-        return GrammarRuleResource::collection($grammarRules->with('course')->paginate());
+        if ($request->expectsJson()) {
+            return GrammarRuleResource::collection($grammarRules->with('course')->paginate());
+        }
+        return view('grammar-rules.index', [
+            'course' => $course,
+            'grammarRules' => $grammarRules->with('course')->paginate()
+        ]);
     }
     /**
      * Show the form for creating a new resource.
@@ -60,9 +67,12 @@ class GrammarRuleController extends Controller {
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(GrammarRule $grammarRule) {
+    public function destroy(Request $request, GrammarRule $grammarRule) {
         $this->authorize('delete', $grammarRule);
         $grammarRule->forceDelete();
-        return response()->noContent();
+        if ($request->expectsJson()) {
+            return response()->noContent();
+        }
+        return redirect()->route('web.grammar-rules.index')->with('status', 'Grammar rule deleted.');
     }
 }

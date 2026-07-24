@@ -6,16 +6,23 @@ use App\Http\Requests\UpdateSystemExampleRequest;
 use App\Http\Resources\SystemExampleResource;
 use App\Models\GrammarRule;
 use App\Models\SystemExample;
-use Illuminate\Http\Response;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 class SystemExampleController extends Controller {
     use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
-    public function index(?GrammarRule $grammarRule = null) {
+    public function index(Request $request, ?GrammarRule $grammarRule = null) {
         $systemExamples = $grammarRule ? $grammarRule->systemExamples() : SystemExample::query();
-        return SystemExampleResource::collection($systemExamples->paginate());
+        if ($request->expectsJson()) {
+            return SystemExampleResource::collection($systemExamples->paginate());
+        }
+        return view('system-examples.index', [
+            'grammarRule' => $grammarRule,
+            'systemExamples' => $systemExamples->with('grammarRule')->paginate()
+        ]);
     }
     /**
      * Show the form for creating a new resource.
@@ -60,9 +67,12 @@ class SystemExampleController extends Controller {
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SystemExample $systemExample) {
+    public function destroy(Request $request, SystemExample $systemExample) {
         $this->authorize('delete', $systemExample);
         $systemExample->forceDelete();
-        return response()->noContent();
+        if ($request->expectsJson()) {
+            return response()->noContent();
+        }
+        return redirect()->route('web.system-examples.index')->with('status', 'Example deleted.');
     }
 }

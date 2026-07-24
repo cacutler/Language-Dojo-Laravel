@@ -5,15 +5,19 @@ use App\Http\Requests\StoreLanguageRequest;
 use App\Http\Requests\UpdateLanguageRequest;
 use App\Http\Resources\LanguageResource;
 use App\Models\Language;
-use Illuminate\Http\Response;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 class LanguageController extends Controller {
     use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
-    public function index() {
-        return LanguageResource::collection(Language::query()->paginate(15));
+    public function index(Request $request) {
+        if ($request->expectsJson()) {
+            return LanguageResource::collection(Language::query()->paginate(15));
+        }
+        return view('languages.index', ['languages' => Language::query()->paginate(15)]);
     }
     /**
      * Show the form for creating a new resource.
@@ -58,9 +62,12 @@ class LanguageController extends Controller {
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Language $language) {
+    public function destroy(Request $request, Language $language) {
         $this->authorize('delete', $language);
         $language->forceDelete();
-        return response()->noContent();
+        if ($request->expectsJson()) {
+            return response()->noContent();
+        }
+        return redirect()->route('web.languages.index')->with('status', 'Language deleted.');
     }
 }

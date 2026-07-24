@@ -6,23 +6,30 @@ use App\Http\Requests\UpdateCourseRequest;
 use App\Http\Resources\CourseResource;
 use App\Models\Course;
 use App\Models\Language;
-use Illuminate\Http\Response;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 class CourseController extends Controller {
     use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
-    public function index(?Language $language = null) {
+    public function index(Request $request, ?Language $language = null) {
         $courses = $language ? $language->courses() : Course::query();
-        return CourseResource::collection($courses->with('language')->paginate());
+        if ($request->expectsJson()) {
+            return CourseResource::collection($courses->with('language')->paginate());
+        }
+        return view('courses.index', [
+            'language' => $language,
+            'courses' => $courses->with('language')->paginate()
+        ]);
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create(Language $language) {
         $this->authorize('create', Course::class);
-        return view('courses.create', Course::class);
+        return view('courses.create', ['language' => $language]);
     }
     /**
      * Store a newly created resource in storage.
@@ -60,9 +67,12 @@ class CourseController extends Controller {
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $course) {
+    public function destroy(Request $request, Course $course) {
         $this->authorize('delete', $course);
         $course->forceDelete();
-        return response()->noContent();
+        if ($request->expectsJson()) {
+            return response()->noContent();
+        }
+        return redirect()->route('web.courses.index')->with('status', 'Course deleted.');
     }
 }

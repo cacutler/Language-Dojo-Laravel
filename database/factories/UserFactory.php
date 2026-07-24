@@ -23,9 +23,9 @@ class UserFactory extends Factory {
             'username' => fake()->username(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'phone_name' => fake()->phoneNumber(),
+            'phone_number' => fake()->phoneNumber(),
             'password' => static::$password ??= Hash::make('password'),
-            'native_language' => fake()->randElement(['English', 'Spanish', 'French', 'Japanese']),
+            'native_language' => fake()->randomElement(['English', 'Spanish', 'French', 'Japanese']),
             'is_admin' => false,
             'remember_token' => Str::random(10)
         ];
