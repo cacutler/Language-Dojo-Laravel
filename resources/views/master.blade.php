@@ -15,12 +15,10 @@
                 <ul class="center">
                     <li><a href="{{route('index')}}" class="{{request()->routeIs('index') ? 'active' : ''}}">Home</a></li>
                     @auth
-                        @if (auth()->user()->is_admin)
-                            <li><a href="{{route('web.languages.index')}}" class="{{request()->routeIs('web.languages.index') ? 'active' : ''}}">Languages</a></li>
-                            <li><a href="{{route('web.courses.index')}}" class="{{request()->routeIs('web.courses.index') ? 'active' : ''}}">Courses</a></li>
-                            <li><a href="{{route('web.grammar-rules.index')}}" class="{{request()->routeIs('web.grammar-rules.index') ? 'active' : ''}}">Grammar Rules</a></li>
-                            <li><a href="{{route('web.system-examples.index')}}" class="{{request()->routeIs('web.system-examples.index') ? 'active' : ''}}">Examples</a></li>
-                        @endif
+                        <li><a href="{{route('web.languages.index')}}" class="{{request()->routeIs('web.languages.index') ? 'active' : ''}}">Languages</a></li>
+                        <li><a href="{{route('web.courses.index')}}" class="{{request()->routeIs('web.courses.index') ? 'active' : ''}}">Courses</a></li>
+                        <li><a href="{{route('web.grammar-rules.index')}}" class="{{request()->routeIs('web.grammar-rules.index') ? 'active' : ''}}">Grammar Rules</a></li>
+                        <li><a href="{{route('web.system-examples.index')}}" class="{{request()->routeIs('web.system-examples.index') ? 'active' : ''}}">System Examples</a></li>
                         <li><a href="{{route('web.user-examples.index')}}" class="{{request()->routeIs('web.user-examples.index') ? 'active' : ''}}">My Examples</a></li>
                         <li><a href="{{route('web.progress-tracking.index')}}" class="{{request()->routeIs('web.progress-tracking.index') ? 'active' : ''}}">My Progress</a></li>
                     @endauth
