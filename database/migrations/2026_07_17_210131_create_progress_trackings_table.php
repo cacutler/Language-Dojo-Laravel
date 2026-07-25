@@ -7,7 +7,7 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('progress_tracking', function (Blueprint $table) {
+        Schema::create('progress_trackings', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignUuid('grammar_rule_id')->constrained('grammar_rules')->cascadeOnDelete();
@@ -20,6 +20,6 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('progress_tracking');
+        Schema::dropIfExists('progress_trackings');
     }
 };
