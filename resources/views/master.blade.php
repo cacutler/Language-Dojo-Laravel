@@ -20,10 +20,9 @@
                             <li><a href="{{route('web.courses.index')}}" class="{{request()->routeIs('web.courses.index') ? 'active' : ''}}">Courses</a></li>
                             <li><a href="{{route('web.grammar-rules.index')}}" class="{{request()->routeIs('web.grammar-rules.index') ? 'active' : ''}}">Grammar Rules</a></li>
                             <li><a href="{{route('web.system-examples.index')}}" class="{{request()->routeIs('web.system-examples.index') ? 'active' : ''}}">Examples</a></li>
-                        @else
-                            <li><a href="{{route('web.user-examples.index')}}" class="{{request()->routeIs('web.user-examples.index') ? 'active' : ''}}">My Examples</a></li>
-                            <li><a href="{{route('web.progress-tracking.index')}}" class="{{request()->routeIs('web.progress-tracking.index') ? 'active' : ''}}">My Progress</a></li>
                         @endif
+                        <li><a href="{{route('web.user-examples.index')}}" class="{{request()->routeIs('web.user-examples.index') ? 'active' : ''}}">My Examples</a></li>
+                        <li><a href="{{route('web.progress-tracking.index')}}" class="{{request()->routeIs('web.progress-tracking.index') ? 'active' : ''}}">My Progress</a></li>
                     @endauth
                     @guest
                         <li><a href="{{route('login')}}" class="{{request()->routeIs('login') ? 'active' : ''}}">Sign In</a></li>
