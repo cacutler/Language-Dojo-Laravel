@@ -26,13 +26,13 @@
             <strong>{{ $systemExample->phrase }}</strong>
             <span>{{ $systemExample->grammarRule?->title }}</span>
             @can('update', $systemExample)
-                <a href="{{ route('web.system-examples.edit', $systemExample) }}">Edit</a>
+                <a class="edit" href="{{ route('web.system-examples.edit', $systemExample) }}">Edit</a>
             @endcan
             @can('delete', $systemExample)
                 <form class="delete" method="POST" action="{{ route('web.system-examples.destroy', $systemExample) }}" onsubmit="return confirm('Delete this example?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button class="submit" type="submit">Delete</button>
                 </form>
             @endcan
         </li>

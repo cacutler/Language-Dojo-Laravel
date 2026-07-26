@@ -12,13 +12,13 @@
             <strong>{{ $entry->grammarRule?->title }}</strong>
             <span>{{ $entry->is_completed ? 'Completed' : 'In progress' }}</span>
             @can('update', $entry)
-                <a href="{{ route('web.progress-tracking.edit', $entry) }}">Edit</a>
+                <a class="edit" href="{{ route('web.progress-tracking.edit', $entry) }}">Edit</a>
             @endcan
             @can('delete', $entry)
                 <form class="delete" method="POST" action="{{ route('web.progress-tracking.destroy', $entry) }}" onsubmit="return confirm('Delete this progress item?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button class="submit" type="submit">Delete</button>
                 </form>
             @endcan
         </li>

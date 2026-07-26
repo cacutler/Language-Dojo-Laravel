@@ -13,13 +13,13 @@
         <li>
             <strong>{{ $language->name }}</strong> ({{ $language->code }})
             @can('update', $language)
-                <a href="{{ route('web.languages.edit', $language) }}">Edit</a>
+                <a class="edit" href="{{ route('web.languages.edit', $language) }}">Edit</a>
             @endcan
             @can('delete', $language)
                 <form class="delete" method="POST" action="{{ route('web.languages.destroy', $language) }}" onsubmit="return confirm('Delete this language?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button class="submit" type="submit">Delete</button>
                 </form>
             @endcan
         </li>

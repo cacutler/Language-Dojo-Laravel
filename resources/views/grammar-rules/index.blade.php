@@ -15,7 +15,7 @@
         <div id="grammar-rules">
             <p>Create a grammar rule for a course:</p>
             @foreach (App\Models\Course::query()->orderBy('title')->get() as $courseOption)
-                <a href="{{ route('web.courses.grammar-rules.create', $courseOption) }}">Add Grammar Rule to {{ $courseOption->title }}</a>
+                <a class="edit" href="{{ route('web.courses.grammar-rules.create', $courseOption) }}">Add Grammar Rule to {{ $courseOption->title }}</a>
             @endforeach
         </div>
     @endif
@@ -32,7 +32,7 @@
                 <form class="delete" method="POST" action="{{ route('web.grammar-rules.destroy', $grammarRule) }}" onsubmit="return confirm('Delete this grammar rule?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button class="submit" type="submit">Delete</button>
                 </form>
             @endcan
         </li>

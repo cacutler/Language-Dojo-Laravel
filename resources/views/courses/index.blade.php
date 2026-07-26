@@ -26,13 +26,13 @@
             <strong>{{ $course->title }}</strong>
             <span>{{ $course->language?->name }}</span>
             @can('update', $course)
-                <a href="{{ route('web.courses.edit', $course) }}">Edit</a>
+                <a class="edit" href="{{ route('web.courses.edit', $course) }}">Edit</a>
             @endcan
             @can('delete', $course)
                 <form class="delete" method="POST" action="{{ route('web.courses.destroy', $course) }}" onsubmit="return confirm('Delete this course?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button class="submit" type="submit">Delete</button>
                 </form>
             @endcan
         </li>

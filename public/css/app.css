@@ -85,6 +85,9 @@ input {
 .delete button {
     cursor: pointer;
 }
+.submit {
+    margin: 0.5rem auto;
+}
 .submit, .delete button {
     width: 5rem !important;
     padding: 0.5rem 0.75rem;
@@ -145,8 +148,12 @@ main ul li a:hover {
 }
 #grammar-rules, #courses, #system-examples {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 0.2rem;
+}
+.edit {
+    border-radius: 5px;
 }
 #grammar-rules, #courses, #system-examples {
     text-align: center;
@@ -155,6 +162,10 @@ main ul li a:hover {
     text-decoration: none;
     color: black;
     padding: 0.5rem;
+}
+#grammar-rules p, #courses p, #system-examples p {
+    padding: 0.5rem;
+    font-weight: bold;
 }
 #grammar-rules a:hover, #courses a:hover, #system-examples a:hover, main>a:hover {
     background-color: #54a0ff;
