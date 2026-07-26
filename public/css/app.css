@@ -51,6 +51,33 @@ header ul li a:hover {
 .active {
     background-color: #54a0ff;
 }
+#intro {
+    padding-top: 1rem;
+}
+#main-page {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    margin: 2rem 0;
+}
+#main-page section ul {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 0 auto;
+    align-content: center;
+}
+#main-page section ul li {
+    border: none;
+    background-color: white;
+    padding: 1rem;
+
+}
+#main-page section p {
+    text-align: center;
+    font-weight: bolder;
+}
 main {
     flex: 1;
 }
