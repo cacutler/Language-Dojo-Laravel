@@ -157,6 +157,7 @@ main ul li a:hover {
 }
 #grammar-rules, #courses, #system-examples {
     text-align: center;
+    justify-content: center;
 }
 #grammar-rules a, #courses a, #system-examples a, main>a {
     text-decoration: none;
