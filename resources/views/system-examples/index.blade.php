@@ -12,7 +12,7 @@
     @if ($grammarRule)
         <a href="{{ route('web.grammar-rules.system-examples.create', $grammarRule) }}">Add System Example</a>
     @else
-        <div>
+        <div id="system-examples">
             <p>Create a grammar rule for a course:</p>
             @foreach (App\Models\GrammarRule::query()->orderBy('title')->get() as $grammarRule)
                 <a href="{{ route('web.grammar-rules.system-examples.create', $grammarRule) }}">Add System Example to {{ $grammarRule->title }}</a>
@@ -29,7 +29,7 @@
                 <a href="{{ route('web.system-examples.edit', $systemExample) }}">Edit</a>
             @endcan
             @can('delete', $systemExample)
-                <form method="POST" action="{{ route('web.system-examples.destroy', $systemExample) }}" onsubmit="return confirm('Delete this example?')">
+                <form class="delete" method="POST" action="{{ route('web.system-examples.destroy', $systemExample) }}" onsubmit="return confirm('Delete this example?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete</button>

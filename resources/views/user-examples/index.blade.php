@@ -15,7 +15,7 @@
                 <a href="{{ route('web.user-examples.edit', $userExample) }}">Edit</a>
             @endcan
             @can('delete', $userExample)
-                <form method="POST" action="{{ route('web.user-examples.destroy', $userExample) }}" onsubmit="return confirm('Delete this example?')">
+                <form class="delete" method="POST" action="{{ route('web.user-examples.destroy', $userExample) }}" onsubmit="return confirm('Delete this example?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete</button>

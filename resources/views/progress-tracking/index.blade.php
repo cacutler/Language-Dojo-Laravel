@@ -15,7 +15,7 @@
                 <a href="{{ route('web.progress-tracking.edit', $entry) }}">Edit</a>
             @endcan
             @can('delete', $entry)
-                <form method="POST" action="{{ route('web.progress-tracking.destroy', $entry) }}" onsubmit="return confirm('Delete this progress item?')">
+                <form class="delete" method="POST" action="{{ route('web.progress-tracking.destroy', $entry) }}" onsubmit="return confirm('Delete this progress item?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete</button>

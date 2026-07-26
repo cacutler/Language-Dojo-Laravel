@@ -28,9 +28,9 @@
                     @endguest
                 </ul>
                 @auth
-                    <div id="auth_area" class="right-space">
+                    <div id="auth-area" class="right-space">
                         <p>Welcome, {{auth()->user()->first_name}}</p>
-                        <form method="POST" action="{{route('logout')}}" id="logout_form">
+                        <form method="POST" action="{{route('logout')}}" id="logout-form">
                             @csrf
                             <button type="submit" class="submit" id="logout">Log Out</button>
                         </form>

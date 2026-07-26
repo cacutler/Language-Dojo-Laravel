@@ -12,7 +12,7 @@
     @if ($language)
         <a href="{{ route('web.languages.courses.create', $language) }}">Add Course</a>
     @else
-        <div>
+        <div id="courses">
             <p>Create a course for a language:</p>
             @foreach (App\Models\Language::query()->orderBy('name')->get() as $languageOption)
                 <a href="{{ route('web.languages.courses.create', $languageOption) }}">Add Course to {{ $languageOption->name }}</a>
@@ -29,7 +29,7 @@
                 <a href="{{ route('web.courses.edit', $course) }}">Edit</a>
             @endcan
             @can('delete', $course)
-                <form method="POST" action="{{ route('web.courses.destroy', $course) }}" onsubmit="return confirm('Delete this course?')">
+                <form class="delete" method="POST" action="{{ route('web.courses.destroy', $course) }}" onsubmit="return confirm('Delete this course?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete</button>
